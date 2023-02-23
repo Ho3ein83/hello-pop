@@ -1,0 +1,409 @@
+/*
+ * Some components are made by Google LLC
+ * Compiled & modified by ho3ein.b.83@gmail.com
+ */
+
+:root {
+    --amd-font-family: "shabnam", "roboto", sans-serief;
+    --amd-title-font: "jetbrainsMono", "roboto", sans-serief;
+    --amd-wrapper-bg: #efefef;
+    --amd-wrapper-bg-rgb: 239, 239, 239;
+    --amd-wrapper-fg: #fff;
+    --amd-wrapper-fg-rgb: 255, 255, 255;
+    --amd-primary: #5142fc;
+    --amd-primary-rgb: 81, 66, 252;
+    --amd-primary-x-low: #eceafe;
+    --amd-input-bg: #f3f1fe;
+    --amd-input-bg-rgb: 243, 241, 254;
+    --amd-color-black: #000;
+    --amd-color-black-rgb: 0, 0, 0;
+    --amd-color-white: #fff;
+    --amd-color-white-rgb: 255, 255, 255;
+    --amd-title-color: #18052a;
+    --amd-title-color-rgb: 24, 5, 42;
+    --amd-text-color: #414141;
+    --amd-text-color-rgb: 65, 65, 65;
+    --amd-color-blue: #039be5;
+    --amd-color-blue-rgb: 3, 155, 229;
+    --amd-color-green: #3dda84;
+    --amd-color-green-rgb: 61, 218, 132;
+    --amd-color-red: #f55753;
+    --amd-color-red-rgb: 245, 87, 83;
+    --amd-color-orange: #f6a04d;
+    --amd-color-orange-rgb: 246, 160, 77;
+    --amd-color-purple: #5142fc;
+    --amd-color-purple-rgb: 81, 66, 252;
+    --amd-shadow: 0 0 4px 0 #00000009;
+    --amd-pointer: pointer;
+}
+
+/* JetBrains Mono */
+@font-face {
+    font-family: 'jetbrainsMono';
+    font-weight: normal;
+    font-display: swap;
+    src: url("fonts/jb-mono/light/JetBrainsMono-Light.woff") format("woff"),
+    url("fonts/jb-mono/light/JetBrainsMono-Light.ttf") format("truetype");
+}
+
+/* Shabnam */
+@font-face {
+    font-family: 'shabnam';
+    font-weight: normal;
+    font-display: swap;
+    src: url("fonts/shabnam/normal/shabnam_normal.woff2") format("woff2"),
+    url("fonts/shabnam/normal/shabnam_normal.woff") format("woff"),
+    url("fonts/shabnam/normal/shabnam_normal.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'shabnam';
+    font-weight: bold;
+    font-display: swap;
+    src: url("fonts/shabnam/bold/shabnam_bold.woff2") format("woff2"),
+    url("fonts/shabnam/bold/shabnam_bold.woff") format("woff"),
+    url("fonts/shabnam/bold/shabnam_bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'jetbrainsMono';
+    font-weight: bold;
+    font-display: swap;
+    src: url("fonts/jb-mono/medium/JetBrainsMono-Medium.woff") format("woff"),
+    url("fonts/jb-mono/medium/JetBrainsMono-Medium.ttf") format("truetype");
+}
+
+body {
+    font-family: var(--amd-font-family);
+    margin: 0;
+    color: var(--amd-text-color);
+    background-color: var(--amd-wrapper-bg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1 {
+    font-size: 32px;
+    margin: 16px 0 0;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 24px 0 0;
+}
+
+h3 {
+    font-size: 22px;
+    margin: 24px 0 0;
+}
+
+h4 {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+h5 {
+    font-size: 16px;
+    margin: 16px 0 0;
+}
+
+h6 {
+    font-size: 14px;
+    margin: 16px 0 0;
+}
+
+p {
+    font-size: 16px;
+    line-height: 29px;
+    margin: 0 0 8px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(var(--amd-text-color-rgb), .3);
+}
+
+pre[class*="language-"] > * {
+    font-family: "jetbrainsMono", sans-serif !important;
+    font-size: 15px !important;
+}
+
+#main {
+    padding: 16px;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.card {
+    position: relative;
+    background: var(--amd-wrapper-fg);
+    border-radius: 10px;
+    box-shadow: var(--amd-shadow);
+    margin: 0;
+    padding: 8px 16px;
+    overflow: hidden;
+}
+
+.card.--code {
+    margin: 16px 0;
+    background: rgba(var(--amd-wrapper-fg-rgb), .5);
+}
+
+.spacer {
+    height: 16px;
+}
+
+:root {
+    --amd-btn-line-height: 36px;
+    --amd-btn-radius: 6px;
+}
+.btn {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 0;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    color: #fff;
+    background-color: rgb(var(--amd-primary-rgb));
+    font-family: var(--amd-font-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: var(--amd-btn-line-height);
+    outline: 0;
+    cursor: pointer;
+    padding: 0 12px;
+    border-radius: var(--amd-btn-radius);
+    text-decoration: none
+}
+
+.btn::-moz-focus-inner {
+    border: 0
+}
+
+.btn::after, .btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    opacity: 0
+}
+
+.btn::before {
+    background-color: var(--amd-color-white);
+    transition: opacity .2s
+}
+
+.btn::after {
+    background: radial-gradient(circle at center, currentColor 1%, transparent 1%) center/10000% 10000% no-repeat;
+    transition: opacity 1s, background-size .5s
+}
+
+.btn:hover::before {
+    opacity: .08
+}
+
+.btn:focus::before {
+    opacity: .24
+}
+
+.btn:hover:focus::before {
+    opacity: .32
+}
+
+.btn:active::after {
+    opacity: .32;
+    background-size: 100% 100%;
+    transition: background-size 0s
+}
+
+.btn:disabled {
+    color: rgba(0, 0, 0, .38);
+    background-color: rgba(0, 0, 0, .12);
+    cursor: initial
+}
+
+.btn:disabled::after, .btn:disabled::before {
+    opacity: 0
+}
+
+.btn:not(.wrap){
+    white-space: nowrap;
+}
+
+.btn.btn-primary {
+    background-color: rgb(var(--amd-primary-rgb))
+}
+
+.btn.btn-sharp {
+    border-radius: 4px !important
+}
+
+.btn.btn-sm {
+    font-size: 13px;
+    height: 34px;
+    padding: 0 12px
+}
+
+.btn.btn-lg {
+    font-size: 16px;
+    height: 40px;
+    padding: 0 20px
+}
+
+.btn-upper {
+    text-transform: uppercase
+}
+
+.btn:not(.btn-text, .btn-outline).--red { background-color: var(--amd-color-red) }
+.btn:not(.btn-text, .btn-outline).--green { background-color: var(--amd-color-green) }
+.btn:not(.btn-text, .btn-outline).--blue { background-color: var(--amd-color-blue) }
+.btn:not(.btn-text, .btn-outline).--orange { background-color: var(--amd-color-orange) }
+.btn:not(.btn-text, .btn-outline).--transparent { background-color: transparent }
+
+/* button-text.min.css */
+.btn-text {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    border-radius: var(--amd-btn-radius);
+    padding: 0 12px;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    color: var(--amd-primary);
+    background-color: transparent;
+    font-family: var(--amd-font-family);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: var(--amd-btn-line-height);
+    outline: 0;
+    cursor: pointer;
+    text-decoration: none
+}
+.btn-text.--red {
+    color: var(--amd-color-red);
+}
+.btn-text.--green {
+    color: var(--amd-color-green);
+}
+.btn-text.--blue {
+    color: var(--amd-color-blue);
+}
+.btn-text.--orange {
+    color: var(--amd-color-orange);
+}
+
+body.dark .btn-text {
+    color: var(--amd-text-color)
+}
+
+.btn-text::-moz-focus-inner {
+    border: 0
+}
+
+.btn-text::after, .btn-text::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    opacity: 0
+}
+
+.btn-text::before {
+    background-color: rgb(var(--amd-primary-rgb));
+    transition: opacity .2s
+}
+
+.btn-text.--red::before {
+    background-color: rgb(var(--amd-color-red-rgb));
+}
+.btn-text.--green::before {
+    background-color: rgb(var(--amd-color-green-rgb));
+}
+.btn-text.--blue::before {
+    background-color: rgb(var(--amd-color-blue-rgb));
+}
+.btn-text.--orange::before {
+    background-color: rgb(var(--amd-color-orange-rgb));
+}
+
+.btn-text::after {
+    background: radial-gradient(circle at center, currentColor 1%, transparent 1%) center/10000% 10000% no-repeat;
+    transition: opacity 1s, background-size .5s
+}
+
+.btn-text:hover::before {
+    opacity: .04
+}
+
+.btn-text:focus::before {
+    opacity: .12
+}
+
+.btn-text:hover:focus::before {
+    opacity: .16
+}
+
+.btn-text:active::after {
+    opacity: .16;
+    background-size: 100% 100%;
+    transition: background-size 0s
+}
+
+.btn-text:disabled {
+    color: rgba(var(--amd-color-black-rgb), .38);
+    background-color: transparent;
+    cursor: initial
+}
+
+.btn-text:disabled::after, .btn-text:disabled::before {
+    opacity: 0
+}
+
+.btn-text.--low {
+    background-color: rgba(var(--amd-primary-rgb), .2);
+}
+
+.indeterminate-progress-bar {
+    position: relative;
+    background-color: rgba(var(--amd-primary-rgb), .12);
+    border-radius: 9999px;
+    height: 4px;
+    overflow: hidden
+}
+
+.indeterminate-progress-bar__progress {
+    position: absolute;
+    background-color: rgba(var(--amd-primary-rgb), .5);
+    border-radius: 9999px;
+    bottom: 0;
+    top: 0;
+    width: 50%;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: indeterminate-progress-bar
+}
+
+@keyframes indeterminate-progress-bar {
+    from {
+        left: -50%
+    }
+    to {
+        left: 100%
+    }
+}
