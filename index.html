@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/structure.css">
+
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="./bootstrap-icons/bootstrap-icons.min.css">
+
+    <!--jQuery -->
+    <script src="./js/jquery.js"></script>
+
+    <!-- Hello module -->
+    <link rel="stylesheet" href="./hello/hello.css">
+    <script src="./hello/hello.js"></script>
+
+    <!-- Highlighter -->
+    <link rel="stylesheet" href="./highlighter/an-old-hope.min.css">
+    <script src="./highlighter/highlight.min.js"></script>
+
+    <title>Hello popup</title>
+</head>
+<body>
+<div id="main">
+    <h1>Hello popup</h1>
+    <p>Hello popup is a user interface component & script that can display alert messages and toasts to users and handle popup interactions. You can add custom buttons, timeout, forms, icons, etc.</p>
+
+    <div class="spacer"></div>
+
+    <h2>Installation</h2>
+    <p>jQuery is required for this module, that means you have to load jQuery before module
+        <b>(jQuery 3.2.1 or higher is recommended)</b>, then link module stylesheet and script:</p>
+    <pre class="language-html"><code>&lt;!-- jQuery --&gt;
+&lt;script src="jquery.js"&gt;&lt;/script&gt;
+
+&lt;!-- Hello module --&gt;
+&lt;link rel="stylesheet" href="hello.css"&gt;
+&lt;script src="hello.js"&gt;&lt;/script&gt;</code></pre>
+
+    <div class="spacer"></div>
+
+    <h3>How to use</h3>
+    <p>Simply by calling <code>Hello.fire(options)</code> where
+        <code>options</code> is your alert options object. Here's some examples:</p>
+
+    <div class="card">
+        <h4>Simple alert</h4>
+        <pre class="language-js"><code>Hello.fire({
+    title: "Hello world!",
+    text: "Popups are awesome!"
+});</code></pre>
+        <button class="btn popup_1">Try it out</button>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="card">
+        <h4>Toast box</h4>
+        <pre class="language-js"><code>Hello.fire({
+    text: "Hey there 👋",
+    type: "toast",
+    position: "mm", // Middle Middle
+    timeout: 3000   // 3 seconds
+});</code></pre>
+        <button class="btn toast_1">Try it out</button>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- Options -->
+    <div>
+        <h3>Options</h3>
+
+        <!-- .title -->
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>title</code>: popup title
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> string, <span class="color-green">default</span> -> ""</p>
+                <p>Values: <span class="color-primary">any string</span></p>
+            </div>
+        </div>
+
+        <!-- .text -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>text</code>: popup text
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> string, <span class="color-green">default</span> -> ""</p>
+                <p>Values: <span class="color-primary">any string</span></p>
+            </div>
+        </div>
+
+        <!-- .type -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>type</code>: popup type
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> string, <span class="color-green">default</span> -> "popup"</p>
+                <p>Values: <span class="color-primary">"popup"</span> | <span class="color-primary">"toast"</span> | <span
+                        class="color-primary">"card"</span></p>
+            </div>
+        </div>
+
+        <!-- .id -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>id</code>: popup ID (set it to null to auto-generate ID)
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> string | null, <span class="color-green">default</span> -> null
+                </p>
+                <p>Values: <span class="color-primary">null</span> | <span class="color-primary">any string</span></p>
+            </div>
+        </div>
+
+        <!-- .theme -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>theme</code>: popup theme (for default theme use "default")
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> string, <span class="color-green">default</span> -> "theme"</p>
+                <p>Values: <span class="color-primary">theme name string</span></p>
+            </div>
+        </div>
+
+        <!-- .mode -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>mode</code>: popup theme mode (light-mode and dark-mode)
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> string, <span class="color-green">default</span> -> "light"</p>
+                <p>Values: <span class="color-primary">"light"</span> | <span class="color-primary">"dark"</span></p>
+            </div>
+        </div>
+
+        <!-- .confirmButton -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>confirmButton</code>: confirm button text or data object
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> boolean | string | object, <span
+                        class="color-green">default</span> -> "Okay"</p>
+                <p>Values: <span class="color-primary">false (for hiding button)</span> | <span
+                        class="color-primary">any string</span> | <span class="color-primary">data object</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+
+        <!-- .cancelButton -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>cancelButton</code>: cancel button text or data object
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> boolean | string | object, <span
+                        class="color-green">default</span> -> false</p>
+                <p>Values: <span class="color-primary">false (for hiding button)</span> | <span
+                        class="color-primary">any string</span> | <span class="color-primary">data object</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+
+        <!-- .popOnClick -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>popOnClick</code>: show popup after clicking on specific elements
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> string, <span class="color-green">default</span> -> ""</p>
+                <p>Values: <span class="color-primary">element query selector string</span></p>
+                <p>Example: ".my-class", "#my-id", "button.btn"</p>
+            </div>
+        </div>
+
+        <!-- .autoDelete -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>autoDelete</code>: destroy popup after closing
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> boolean, <span class="color-green">default</span> -> true</p>
+                <p>Values: <span class="color-primary">true</span> | <span class="color-primary">false</span></p>
+                <p>Example: ".my-class", "#my-id", "button.btn"</p>
+            </div>
+        </div>
+
+        <!-- .forms -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>forms</code>: forms handler object
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> object, <span class="color-green">default</span> -> {}</p>
+                <p>Values: <span class="color-primary">handlers object</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+
+        <!-- .buttons -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>buttons</code>: extra buttons array
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> array, <span class="color-green">default</span> -> []</p>
+                <p>Values: <span class="color-primary">buttons array</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+
+        <!-- .allowOutsideClick -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>allowOutsideClick</code>: close popup by clicking the outside of popup
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> boolean, <span class="color-green">default</span> -> true</p>
+                <p>Values: <span class="color-primary">true</span> | <span class="color-primary">false</span></p>
+            </div>
+        </div>
+
+        <!-- .allowEscapeKey -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>allowEscapeKey</code>: close popup by pressing escape key on keyboard
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> boolean, <span class="color-green">default</span> -> true</p>
+                <p>Values: <span class="color-primary">true</span> | <span class="color-primary">false</span></p>
+            </div>
+        </div>
+
+        <!-- .showLoader -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>showLoader</code>: show loading bar above popup box
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> boolean, <span class="color-green">default</span> -> false</p>
+                <p>Values: <span class="color-primary">true</span> | <span class="color-primary">false</span></p>
+            </div>
+        </div>
+
+        <!-- .singleMode -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>singleMode</code>: whether to close all other popups after building it
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> boolean, <span class="color-green">default</span> -> true</p>
+                <p>Values: <span class="color-primary">true</span> | <span class="color-primary">false</span></p>
+            </div>
+        </div>
+
+        <!-- .timeout -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>timeout</code>: close popup after timeout reached (set null to disable)
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> null | int, <span class="color-green">default</span> -> null</p>
+                <p>Values: <span class="color-primary">null</span> | <span
+                        class="color-primary">timeout number in milliseconds</span></p>
+            </div>
+        </div>
+
+        <!-- .autoFocus -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>autoFocus</code>: focus on confirm button after displaying
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> bool, <span class="color-green">default</span> -> true</p>
+                <p>Values: <span class="color-primary">true</span> | <span class="color-primary">false</span></p>
+            </div>
+        </div>
+
+        <!-- .position -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>position</code>: toast position
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> string, <span class="color-green">default</span> -> "mm"</p>
+                <p>Values:
+                    <span class="color-primary">lt (left top)</span> | <span class="color-primary">lm (left middle)</span> |
+                    <span class="color-primary">lb (left bottom)</span>
+                    <span class="color-primary">mt (middle top)</span> | <span
+                            class="color-primary">mm (middle middle)</span> | <span
+                            class="color-primary">mb (middle bottom)</span>
+                    <span class="color-primary">rt (right top)</span> | <span
+                            class="color-primary">rm (right middle)</span> | <span
+                            class="color-primary">rb (right bottom)</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- .toastOffset -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>toastOffset</code>: toast space from screen edges
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> int, <span class="color-green">default</span> -> 10</p>
+                <p>Values: <span class="color-primary">margin number in pixels</span></p>
+            </div>
+        </div>
+
+        <!-- .icon -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>icon</code>: popup icon
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> "string", <span class="color-green">default</span> -> ""</p>
+                <p>Values: <span class="color-primary">"success"</span> | <span class="color-primary">"info"</span> | <span
+                        class="color-primary">"error"</span> | <span class="color-primary">"warning"</span></p>
+            </div>
+        </div>
+
+        <!-- .onBuild() -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>onBuild()</code>: calls after popup built
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> callable, <span class="color-green">default</span> -> () => null
+                </p>
+                <p>Values: <span class="color-primary">callback function</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+
+        <!-- .onConfirm() -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>onConfirm()</code>: calls on confirming popup
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> callable, <span class="color-green">default</span> -> () => null
+                </p>
+                <p>Values: <span class="color-primary">callback function</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+
+        <!-- .onClose() -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>onConfirm()</code>: calls after popup closed (both outside-click and escape-key are included)
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> callable, <span class="color-green">default</span> -> () => null
+                </p>
+                <p>Values: <span class="color-primary">callback function</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+
+        <!-- .onCancel() -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>onConfirm()</code>: calls after popup cancelled
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> callable, <span class="color-green">default</span> -> () => null
+                </p>
+                <p>Values: <span class="color-primary">callback function</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+
+        <!-- .onOpen() -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>onOpen()</code>: calls after popup opened
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> callable, <span class="color-green">default</span> -> () => null
+                </p>
+                <p>Values: <span class="color-primary">callback function</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+
+        <!-- .onForm() -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>onForm()</code>: calls on form submit
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> callable, <span class="color-green">default</span> -> () => null
+                </p>
+                <p>Values: <span class="color-primary">callback function</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+
+        <!-- .onDelete() -->
+        <hr>
+        <div class="mt-20">
+            <h4 class="jb-mono">
+                <code>onDelete()</code>: calls before destroying popup
+            </h4>
+            <div class="jb-mono">
+                <p><span class="color-red">type</span> -> callable, <span class="color-green">default</span> -> () => null
+                </p>
+                <p>Values: <span class="color-primary">callback function</span></p>
+                <p>See examples for more details</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- Popup examples -->
+    <div>
+        <h3>Popup examples</h3>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Popup with close button</h4>
+                <pre class="language-js"><code>Hello.fire({
+    title: "Delete",
+    text: "Are you sure about deleting these files?",
+    confirmButton: "Yes",
+    cancelButton: "No"
+});</code></pre>
+                <button class="btn popup_2">Try it out</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Popup with icon</h4>
+                <pre class="language-js"><code>Hello.fire({
+    title: "Note",
+    text: "jQuery is required for this module!",
+    icon: "info"
+});</code></pre>
+                <button class="btn popup_3">Try it out</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Popup with modern theme</h4>
+                <pre class="language-js"><code>Hello.fire({
+    title: "Success",
+    text: "Your account information updated successfully.",
+    icon: "success",
+    theme: "modern"
+});</code></pre>
+                <button class="btn popup_4">Try it out</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Popup with callback actions</h4>
+                <pre class="language-js"><code>Hello.fire({
+    title: "Delete",
+    text: "Are you sure about deleting these files?",
+    confirmButton: "Yes",
+    cancelButton: "No",
+    onConfirm: () => {
+        Hello.fire({
+            title: "Delete",
+            text: "Your file has been deleted successfully",
+            icon: "success"
+        });
+    }
+});</code></pre>
+                <button class="btn popup_5">Try it out</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Timer popup</h4>
+                <pre class="language-js"><code>Hello.fire({
+    title: "Please wait",
+    text: "Please wait while we are looking at you 😃",
+    confirmButton: false,
+    timeout: 5000,
+    showLoader: true,
+    allowOutsideClick: false,
+    allowEscapeKey: false
+});</code></pre>
+                <button class="btn popup_6">Try it out</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Popup with AJAX request</h4>
+                <pre class="language-js"><code>let image_url = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png";
+
+function ping_image(url, onload, onerror) {
+    let img = new Image(), time = new Date().getTime();
+    img.onload = () => onload(img, time)
+    img.onerror = () => onerror("Cannot load image");
+    img.src = url;
+}
+
+Hello.fire({
+    title: "Loading image",
+    text: "Please wait...",
+    confirmButton: false,
+    showLoader: true,
+    onBuild: () =&gt; {
+        ping_image(image_url, (img, t) =&gt; {
+            let ping = new Date().getTime() - t;
+            Hello.fire({
+                title: "Success",
+                text: `&lt;div id="loaded-image"&gt;&lt;p&gt;Image has loaded in ${ping}ms&lt;/p&gt;&lt;/div&gt;`,
+                icon: "success",
+                onBuild: () =&gt; $("#loaded-image").append(img).find("img").attr("style", "width:80px")
+            });
+        }, text =&gt; {
+            Hello.fire({
+                title: "An error has occurred",
+                text: text,
+                icon: "error"
+            });
+        });
+    }
+});</code></pre>
+                <button class="btn popup_ajax">Try it out</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Popup with custom button</h4>
+                <pre class="language-js"><code>Hello.fire({
+    title: "Newsletter",
+    text: "Please subscribe to our newsletter",
+    confirmButton: "Join",
+    cancelButton: "No thanks",
+    buttons: [{
+        text: "Remind me later",
+        type: "primary",
+        attr: "data-newsletter-snooze"
+    }],
+    onConfirm: () =&gt; {
+        Hello.fire({
+            title: "Newsletter",
+            text: "Thanks for joining our newsletter 😇"
+        });
+    },
+    onBuild: () =&gt; {
+        $("[data-newsletter-snooze]").click(function(){
+            Hello.fire({
+                title: "Newsletter",
+                text: "We'll remind you to join us later 😊"
+            });
+        });
+    }
+});</code></pre>
+                <button class="btn popup_newsletter">Try it out</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Popup with login form</h4>
+                <pre class="language-js"><code>Hello.fire({
+    title: "Login",
+    text: `
+        &lt;form id="login-form"&gt;
+            &lt;div class="hello-input-group"&gt;
+                &lt;input type="text" name="username" placeholder=""&gt;
+                &lt;span&gt;Username&lt;/span&gt;
+                &lt;i class="icon bi bi-person"&gt;&lt;/i&gt;
+                &lt;/div&gt;
+            &lt;div class="hello-input-group"&gt;
+                &lt;input type="password" name="password" placeholder=""&gt;
+                &lt;span&gt;Password&lt;/span&gt;
+                &lt;i class="icon bi bi-asterisk"&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;button type="submit" class="btn"&gt;Login&lt;/button&gt;
+        &lt;/form&gt;
+    `,
+    confirmButton: false,
+    forms: {
+        "login-form": (data, setter) =&gt; {
+            let {username, password} = data;
+            if(!username.value){
+                return {
+                    success: false,
+                    text: "Please enter a valid username"
+                }
+            }
+            if(password.value.length &lt; 8){
+                return {
+                    success: false,
+                    text: "Password must be at least 8 characters"
+                }
+            }
+            Hello.fire({
+                title: `Welcome ${username.value}`,
+                text: `${password.value} is not very strong password by the way 😌`
+            });
+        }
+    }
+});</code></pre>
+                <button class="btn popup_login">Try it out</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Popup builder</h4>
+                <pre class="language-js"><code>let popup = new Hello({
+    title: "Hello pop",
+    text: "Are you enjoy using it?",
+    confirmButton: "Yes",
+    cancelButton: "No"
+});
+
+setTimeout(() => {
+    // Display the alert somewhere else
+    popup.build().pop();
+}, 2000);</code></pre>
+                <button class="btn popup_builder">Try it out</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Popup queue</h4>
+                <pre class="language-js"><code>Hello.queue({
+    title: "Popup #1",
+    text: "This is the first popup in the queue",
+    confirmButton: false,
+    timeout: 2000,
+    showLoader: true
+});
+
+Hello.queue({
+    title: "Popup #2",
+    text: "This is the second popup",
+    confirmButton: "Close me"
+});
+
+Hello.queue({
+    title: "Popup #3",
+    text: "And it goes on...",
+    confirmButton: false,
+    timeout: 2000,
+    showLoader: true
+});</code></pre>
+                <button class="btn popup_queue">Try it out</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Toast examples -->
+    <div>
+        <h3>Toast box examples</h3>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Auto-close toast</h4>
+                <pre class="language-js"><code>Hello.fire({
+    text: "Hey there 👋",
+    type: "toast",
+    position: "mm", // Middle Middle
+    timeout: 3000   // 3 seconds
+});</code></pre>
+                <button class="btn toast_1">Try it out</button>
+                <button class="btn btn-text close-all">Close all</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Permanent toast</h4>
+                <pre class="language-js"><code>Hello.fire({
+    text: "Click on 'Close all' button",
+    type: "toast",
+    position: "mm"
+});</code></pre>
+                <button class="btn toast_2">Try it out</button>
+                <button class="btn btn-text close-all">Close all</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Toast queue</h4>
+                <pre class="language-js"><code>Hello.queue({
+    text: "Files uploaded successfully",
+    type: "toast",
+    position: "mm",
+    timeout: 2000
+});
+
+Hello.queue({
+    text: "Updating account information...",
+    type: "toast",
+    position: "mm",
+    timeout: 3000
+});
+
+Hello.queue({
+    text: "Account information updated",
+    type: "toast",
+    position: "mm",
+    timeout: 2000
+});</code></pre>
+                <button class="btn toast_queue">Try it out</button>
+                <button class="btn btn-text close-all">Close last one</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Other examples -->
+    <div>
+        <h3>Other examples</h3>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Close all or the last one in the queue</h4>
+                <pre class="language-js"><code>Hello.closeAll();</code></pre>
+                <button class="btn toast_1">Show toast</button>
+                <button class="btn-text close-all">Close it</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Close all and clear queue</h4>
+                <pre class="language-js"><code>Hello.clearQueue();</code></pre>
+                <button class="btn toast_queue">Create queue</button>
+                <button class="btn-text clear-queue">Clear queue</button>
+            </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <div>
+            <div class="card">
+                <h4>Make toast in a single line!</h4>
+                <pre class="language-js"><code>Hello.makeToast(text, timeout);</code></pre>
+                <button class="btn toast_1">Try it out</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<div style="height:150px"></div>
+<script>
+
+    $(".close-all").click(() => Hello.closeAll());
+
+    $(".clear-queue").click(() => Hello.clearQueue());
+
+    $(".popup_1").click(() => {
+        Hello.fire({
+            title: "Hello world!",
+            text: "Popups are awesome!"
+        });
+    });
+
+    $(".popup_2").click(() => {
+        Hello.fire({
+            title: "Delete",
+            text: "Are you sure about deleting these files?",
+            confirmButton: "Yes",
+            cancelButton: "No"
+        });
+    });
+
+    $(".popup_3").click(() => {
+        Hello.fire({
+            title: "Note",
+            text: "jQuery is required for this module!",
+            icon: "info"
+        });
+    });
+
+    $(".popup_4").click(() => {
+        Hello.fire({
+            title: "Success",
+            text: "Your account information updated successfully.",
+            icon: "success",
+            theme: "modern"
+        });
+    });
+
+    $(".popup_5").click(() => {
+        Hello.fire({
+            title: "Delete",
+            text: "Are you sure about deleting these files?",
+            confirmButton: "Yes",
+            cancelButton: "No",
+            onConfirm: () => {
+                Hello.fire({
+                    title: "Delete",
+                    text: "Your file has been deleted successfully",
+                    icon: "success"
+                });
+            }
+        });
+    });
+
+    $(".popup_6").click(() => {
+        Hello.fire({
+            title: "Please wait",
+            text: "Please wait while we are looking at you 😃",
+            confirmButton: false,
+            timeout: 5000,
+            showLoader: true,
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    });
+
+    function ping_image(url, onload, onerror) {
+        let img = new Image(), time = new Date().getTime();
+        img.onload = () => onload(img, time)
+        img.onerror = () => onerror("Cannot load image");
+        img.src = url;
+    }
+
+    $(".popup_ajax").click(() => {
+        let image_url = "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png?cache=" + new Date().getTime();
+        Hello.fire({
+            title: "Loading image",
+            text: "Please wait...",
+            confirmButton: false,
+            showLoader: true,
+            onBuild: () => {
+                ping_image(image_url, (img, t) => {
+                    let ping = new Date().getTime() - t;
+                    Hello.fire({
+                        title: "Success",
+                        text: `<div id="loaded-image"><p>Image has loaded in ${ping}ms</p></div>`,
+                        icon: "success",
+                        onBuild: () => $("#loaded-image").append(img).find("img").attr("style", "width:80px")
+                    });
+                }, text => {
+                    Hello.fire({
+                        title: "An error has occurred",
+                        text: text,
+                        icon: "error"
+                    });
+                });
+            }
+        });
+    });
+
+    $(".popup_newsletter").click(() => {
+        Hello.fire({
+            title: "Newsletter",
+            text: "Please subscribe to our newsletter",
+            confirmButton: "Join",
+            cancelButton: "No thanks",
+            buttons: [{
+                text: "Remind me later",
+                type: "primary",
+                attr: "data-newsletter-snooze"
+            }],
+            onConfirm: () => {
+                Hello.fire({
+                    title: "Newsletter",
+                    text: "Thanks for joining our newsletter 😇"
+                });
+            },
+            onBuild: () => {
+                $("[data-newsletter-snooze]").click(function () {
+                    Hello.fire({
+                        title: "Newsletter",
+                        text: "We'll remind you to join us later 😊"
+                    });
+                });
+            }
+        });
+    });
+
+    $(".popup_login").click(() => {
+        Hello.fire({
+            title: "Login",
+            text: `
+<form id="login-form">
+    <div class="hello-input-group">
+        <input type="text" name="username" placeholder="">
+        <span>Username</span>
+        <i class="icon bi bi-person"></i>
+    </div>
+    <div class="hello-input-group">
+        <input type="password" name="password" placeholder="">
+        <span>Password</span>
+        <i class="icon bi bi-asterisk"></i>
+    </div>
+    <button type="submit" class="btn">Login</button>
+</form>`,
+            confirmButton: false,
+            forms: {
+                "login-form": (data, setter) => {
+                    let {username, password} = data;
+                    if(!username.value){
+                        return {
+                            success: false,
+                            text: "Please enter a valid username"
+                        }
+                    }
+                    if(password.value.length < 8){
+                        return {
+                            success: false,
+                            text: "Password must be at least 8 characters"
+                        }
+                    }
+                    Hello.fire({
+                        title: `Welcome ${username.value}`,
+                        text: `${password.value} is not very strong password by the way 😌`
+                    });
+                }
+            }
+        });
+    });
+
+    $(".popup_builder").click(() => {
+
+        Hello.fire({
+            text: "Please wait 2 seconds",
+            type: "toast",
+            timeout: 1500
+        });
+
+        let popup = new Hello({
+            title: "Hello pop",
+            text: "Are you enjoy using it?",
+            confirmButton: "Yes",
+            cancelButton: "No"
+        });
+
+        setTimeout(() => {
+            // Display the alert
+            popup.build().pop();
+        }, 2000);
+    });
+
+    $(".popup_queue").click(() => {
+        Hello.queue({
+            title: "Popup #1",
+            text: "This is the first popup in the queue",
+            confirmButton: false,
+            timeout: 2000,
+            showLoader: true
+        });
+        Hello.queue({
+            title: "Popup #2",
+            text: "This is the second popup",
+            confirmButton: "Close me"
+        });
+        Hello.queue({
+            title: "Popup #3",
+            text: "And it goes on...",
+            confirmButton: false,
+            timeout: 2000,
+            showLoader: true
+        });
+    });
+
+    $(".toast_1").click(() => {
+        Hello.fire({
+            text: "Hey there 👋",
+            type: "toast",
+            position: "mm",
+            timeout: 3000
+        });
+    });
+
+    $(".toast_2").click(() => {
+        Hello.fire({
+            text: "Click on 'Close all' button",
+            type: "toast",
+            position: "mm"
+        });
+    });
+
+    $(".toast_queue").click(() => {
+        Hello.queue({
+            text: "Files uploaded successfully",
+            type: "toast",
+            position: "mm",
+            timeout: 2000
+        });
+        Hello.queue({
+            text: "Updating account information...",
+            type: "toast",
+            position: "mm",
+            timeout: 3000
+        });
+        Hello.queue({
+            text: "Account information updated",
+            type: "toast",
+            position: "mm",
+            timeout: 2000
+        });
+    });
+
+    if (typeof hljs !== "undefined")
+        hljs.highlightAll();
+</script>
+</body>
+</html>
