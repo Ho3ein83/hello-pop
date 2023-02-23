@@ -31,3 +31,6 @@ Hello.fire({
     timeout: 3000   // 3 seconds
 });
 ```
+
+### More
+For more information about this module and more examples download this project and open index.html file.
